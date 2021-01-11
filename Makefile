@@ -20,40 +20,30 @@ SRCS =  t_read.s
 		ft_strlen.s\
 		ft_write.s\
 
-OBJSB = ${SRCSB:.c=.o}
+OBJS = ${SRCS:.s=.o}
 
-HEADERS = libft.h
+NAME = libasm.a
 
-OBJS = ${SRCS:.c=.o}
-
-NAME = libft.a
-
-CC = gcc
+NA = nasm -f macho64
 
 FLAGS = -Wall -Wextra -Werror
 
-RM = rm -f
+RM = rm -rf
 
 all:            ${NAME}
-
-bonus:          ${OBJS} ${OBJSB}
-                        ar rcs ${NAME} ${OBJS} ${OBJSB}
-                        ranlib ${NAME}
-
-$(OBJS):        ${HEADERS}
 
 $(NAME):        ${OBJS}
                         ar rcs ${NAME} ${OBJS}
                         ranlib ${NAME}
 
-%.c%.o:
-                        ${CC} ${FLAGS} -c $< -o ${<:.c=.o}
+%.o:			%.s
+				$(NA) $(NA_FLAGS) $<
 
 fclean:         clean
                         ${RM} ${NAME}
 
 clean:
-                        ${RM} ${OBJS} ${OBJSB}
+                        ${RM} ${OBJS}
 
 re:                     fclean all
 

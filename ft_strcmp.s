@@ -4,34 +4,31 @@ global _ft_strcmp
 section .text
 
 _ft_strcmp: ;rsi = s2 rdi = s1
-	xor rcx, rcx
+	xor rcx, rcx ; i = 0
 	jmp comp
+
+incre:
+	inc rcx
+comp:
+	cmp BYTE[rdi + rcx], 0
+	je end
+	cmp BYTE[rsi + rcx], 0
+	je end
+	mov dl, BYTE [rdi + rcx]
+	cmp dl, BYTE [rsi + rcx]
+	je incre
 
 end:
 	mov dl, BYTE [rdi + rcx]
 	cmp dl, BYTE [rsi + rcx]
 	je egal
-	jl infe
+	jl inf
 	jg sup
-
-comp:
-	cmp rdi, 0
-	je end
-	cmp rsi, 0
-	je end
-	mov dl, BYTE [rdi + rcx]
-	cmp dl, BYTE [rsi + rcx]
-	jne end
-	jmp incre
-
-incre:
-	inc rcx
-
 egal:
 	mov rax, 0
 	ret
 
-infe:
+inf:
 	mov rax, -1
 	ret
 
