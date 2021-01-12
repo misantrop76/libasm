@@ -8,9 +8,12 @@ int ft_strlen(char *str);
 int ft_strcmp(char *s1, char *s2);
 char *ft_strcpy(char *dest, char *src);
 char *ft_strdup(char *str);
+void test(void);
 
 
-int main(void)
+int main(int ac, char **av)
 {
-	printf("%s", ft_strdup("salut"));
+	test();
+	//printf("my = %d|\n", ft_strcmp("salu", "salut"));
+	//printf("true = %d|\n", strcmp("salu", "salut"));
 }

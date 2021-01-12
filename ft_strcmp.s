@@ -2,13 +2,19 @@ bits 64
 global _ft_strcmp
 
 section .text
-
 _ft_strcmp: ;rsi = s2 rdi = s1
-	xor rcx, rcx ; i = 0
+	xor rcx, rcx
 	jmp comp
 
+end:
+	mov dl, BYTE [rdi + rcx]
+	cmp dl, BYTE [rsi + rcx]
+	je egal
+	jl infe
+	jg sup
 incre:
 	inc rcx
+
 comp:
 	cmp BYTE[rdi + rcx], 0
 	je end
@@ -16,19 +22,14 @@ comp:
 	je end
 	mov dl, BYTE [rdi + rcx]
 	cmp dl, BYTE [rsi + rcx]
-	je incre
+	jne end
+	jmp incre
 
-end:
-	mov dl, BYTE [rdi + rcx]
-	cmp dl, BYTE [rsi + rcx]
-	je egal
-	jl inf
-	jg sup
 egal:
 	mov rax, 0
 	ret
 
-inf:
+infe:
 	mov rax, -1
 	ret
 

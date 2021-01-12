@@ -1,10 +1,8 @@
 bits 64
+global _ft_strdup
 extern _malloc
 
-global _ft_strdup
-
 section .text
-
 _ft_strdup:   ;src = rdi
 	mov rcx, 0
 	cmp rdi, 0
