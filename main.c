@@ -2,6 +2,7 @@
 #include <unistd.h>
 #include <string.h>
 #include <stdio.h>
+#include <errno.h>
 
 ssize_t	ft_write(int fd, void const *buf, size_t nbyte);
 int ft_strlen(char *str);
@@ -13,7 +14,9 @@ void test(void);
 
 int main(int ac, char **av)
 {
-	test();
-	//printf("my = %d|\n", ft_strcmp("salu", "salut"));
-	//printf("true = %d|\n", strcmp("salu", "salut"));
+	errno = 0;
+	ft_write(1, "salut", 5);
+	printf("%d\n", errno);
+	write(1, "salut", 5);
+	printf("%d\n", errno);
 }

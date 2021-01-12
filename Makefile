@@ -6,7 +6,7 @@
 #    By: mminet <mminet@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/16 14:22:20 by mminet            #+#    #+#              #
-#    Updated: 2021/01/12 16:02:05 by mminet           ###   ########lyon.fr    #
+#    Updated: 2021/01/12 19:13:27 by mminet           ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ $(NAME):	${OBJS}
 %.o:	%.s
 	$(NA) $(NA_FLAGS) $<
 
-run:
+run: $(NAME)
 	gcc $(NAME) main.c -o test && ./test
 
 fclean:	clean
