@@ -1,6 +1,7 @@
 bits 64
 global _ft_strdup
 extern _malloc
+extern ___error
 
 section .text
 _ft_strdup:   ;src = rdi
@@ -22,10 +23,8 @@ do_malloc:
 	push rdi
 	mov rdi, rcx
 	call _malloc ; rax = malloc
+	jz error_malloc
 	pop rdi
-	jmp cpy_start
-
-cpy_start:
 	xor rcx, rcx
 	jmp cpy
 
@@ -37,10 +36,16 @@ cpy:
 	mov BYTE[rax + rcx], dl
 	cmp dl, 0
 	jne incre
-	jmp done
+	ret
 
 error:
 	mov rax, 0
+	ret
 
-done:
+error_malloc:
+	push rax
+	call ___error
+	pop rbx
+	mov [rax], rbx
+	mov rax, 0
 	ret

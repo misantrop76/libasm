@@ -10,7 +10,6 @@ _ft_write:						; rdi = file descriptor, rsi = string, rdx = byte count
 	ret
 
 error:
-	;neg rax
 	push rax
 	call ___error
 	pop rbx

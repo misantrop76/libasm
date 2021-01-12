@@ -6,12 +6,12 @@ _ft_strcpy:       ; source: rsi   dest: rdi
 	xor	rcx, rcx
 	cmp rsi, 0
 	je done
-	jmp fill
+	jmp cpy
 
 incre:
 	inc rcx
 
-fill:
+cpy:
 	mov dl, BYTE[rsi + rcx]
 	mov BYTE[rdi + rcx], dl
 	cmp dl, 0

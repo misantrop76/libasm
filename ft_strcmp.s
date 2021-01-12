@@ -6,12 +6,6 @@ _ft_strcmp: ;rsi = s2 rdi = s1
 	xor rcx, rcx
 	jmp comp
 
-end:
-	mov dl, BYTE [rdi + rcx]
-	cmp dl, BYTE [rsi + rcx]
-	je egal
-	jl infe
-	jg sup
 incre:
 	inc rcx
 
@@ -24,6 +18,13 @@ comp:
 	cmp dl, BYTE [rsi + rcx]
 	jne end
 	jmp incre
+
+end:
+	mov dl, BYTE [rdi + rcx]
+	cmp dl, BYTE [rsi + rcx]
+	je egal
+	jl infe
+	jg sup
 
 egal:
 	mov rax, 0
