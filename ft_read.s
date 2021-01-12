@@ -1,9 +1,9 @@
 bits 64
-global _ft_write
+global _ft_read
 extern ___error
 
 section .text
-_ft_write:						; rdi = file descriptor, rsi = string, rdx = byte count
+_ft_read:						; rdi = file descriptor, rsi = string, rdx = byte count
     mov rax, 0x2000003
     syscall
 	jc	error

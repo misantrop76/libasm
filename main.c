@@ -7,39 +7,57 @@ int main(void)
 	int ret;
 	char *buf;
 	int fd;
-	buf = malloc(2);
-	str = malloc(4 + 1);
 
+	buf = malloc(sizeof(char) * 2);
+	str = malloc(sizeof(char) * 6);
+	//strlen
 	printf(" == FT_STRLEN == \n");
-	i = ft_strlen("caio");
-	printf("ft_strlen('caio'): %d\n", i);
+	i = ft_strlen("salut");
+	printf("ft_strlen('salut'): %d\n", i);
 	i = strlen("caio");
-	printf("   strlen('caio'): %d\n", i);
-	//str = malloc(5);
+	printf("   strlen('salut'): %d\n\n", i);
+
+
+
+
+	//strcpy
 	printf(" == FT_STRCPY == \n");
-	str = strcpy(str, "caio");
-	printf("   strcpy(str, 'caio'): %s\n", str);
-	str = ft_strcpy(str, "caio");
-	printf("ft_strcpy(str, 'caio'): %s\n", str);
-
+	str = strcpy(str, "salut");
+	printf("   strcpy(str, 'salut'): %s\n", str);
+	str = ft_strcpy(str, "salut");
+	printf("ft_strcpy(str, 'salut'): %s\n\n", str);
+	
+	
+	
+	
+	//strcmp
 	printf(" == FT_STRCMP == \n");
-	i = ft_strcmp("caio", "caio");
-	printf("ft_strcmp('caio', 'caio'): %d\n", i);
-	i = strcmp("caio", "caio");
-	printf("   strcmp('caio', 'caio'): %d\n", i);
+	i = ft_strcmp("salut", "salut");
+	printf("ft_strcmp('salut', 'salut'): %d\n", i);
+	i = strcmp("salut", "salut");
+	printf("   strcmp('salut', 'salut'): %d\n", i);
 
+	i = ft_strcmp("salu", "salut");
+	printf("ft_strcmp('salu', 'salut'): %d\n", i);
+	i = strcmp("salu", "salut");
+	printf("   strcmp('salu', 'salut'): %d\n\n", i);
+	
+	
 	//write
 	printf(" == FT_WRITE == \n");
-	if ((ret = write(1, "caio", 4)) == -1)
+	if ((ret = write(1, "salut", 5)) == -1)
 		printf("X | ft_write | %d | %s\n", ret, strerror(errno));
 	else
-		printf(" | ft_write(1, 'caio', 4)\n");
+		printf(" | ft_write(1, 'salut', 4)\n");
 
-	if ((ret = ft_write(1, "caio", 4)) == -1)
-		printf("X | write | %d | %s\n", ret, strerror(errno));
+	if ((ret = ft_write(1, "salut", 5)) == -1)
+		printf("X | write | %d | %s\n\n", ret, strerror(errno));
 	else
-		printf(" | write(1, 'caio', 4)\n");
-
+		printf(" | write(1, 'salut', 5)\n\n");
+	
+	
+	
+	
 	//read
 	printf(" == FT_READ == \n");
 	fd = open("teste.txt", O_RDONLY);
@@ -50,35 +68,23 @@ int main(void)
 	close(fd);
 	fd = open("teste.txt", O_RDONLY);
 	if (ft_read(fd, buf, 2) == -1)
-		printf("X | ft_read(fd, buf, 2) | %s\n", strerror(errno));
+		printf("X | ft_read(fd, buf, 2) | %s\n\n", strerror(errno));
 	else
-		printf("%s | ft_read(fd, buf, 2)\n", buf);
+		printf("%s | ft_read(fd, buf, 2)\n\n", buf);
 	close(fd);
+	
+	
+	
+	
 	//strdup
 	printf(" == FT_STRDUP == \n");
-	if (!(str = strdup("caio")))
-		printf("X | strdup('caio') | errno: %d | |%s|\n", errno, strerror(errno));
+	if (!(str = strdup("salut")))
+		printf("X | strdup('salut') | errno: %d | |%s|\n", errno, strerror(errno));
 	else
-		printf("strdup('caio'): |%s|\n", str);
-
-	if (!(str = ft_strdup("caio")))
-		printf("X | ft_strdup('caio') | errno: %d | |%s|\n", errno, strerror(errno));
+		printf("strdup('salut'): |%s|\n", str);
+	if (!(str = ft_strdup("salut")))
+		printf("X | ft_strdup('salut') | errno: %d | |%s|\n", errno, strerror(errno));
 	else
-		printf("ft_strdup('caio'): |%s|\n", str);
-
+		printf("ft_strdup('salut'): |%s|\n", str);
 	return (0);
-	/*printf("-----strlen_test-----\n")
-	printf("str=\"salut\"   my:%d true:%d\n", ft_strlen("salut"), strlen("salut"));
-	printf("str=\"\"   my:%d true:%d\n", ft_strlen(""), strlen(""));
-	printf("\n-----strcmp_test-----\n");
-	printf("s1=\"salut\" s2=\"salu\"   my:%d true:%d\n", ft_strcmp("salut", "salu"), strcpm("salut", "salu"));
-	read_test(void);
-	write_test(void);
-	strcpy_test(void);
-	strdup_test(void);
-	errno = 0;
-	ft_write(1, "salut", 5);
-	printf("%d\n", errno);
-	write(1, "salut", 5);
-	printf("%d\n", errno);*/
 }
