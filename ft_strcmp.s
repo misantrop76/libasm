@@ -3,25 +3,23 @@ global _ft_strcmp
 
 section .text
 _ft_strcmp: ;rsi = s2 rdi = s1
-	xor rcx, rcx
+	xor rcx, rcx; i = 0
 	jmp comp
 
 incre:
 	inc rcx
 
 comp:
-	cmp BYTE[rdi + rcx], 0
-	je end
-	cmp BYTE[rsi + rcx], 0
+	cmp BYTE[rdi + rcx], 0; s1[i] == 0 ?
 	je end
 	mov dl, BYTE [rdi + rcx]
-	cmp dl, BYTE [rsi + rcx]
+	cmp dl, BYTE [rsi + rcx]; s1[i] = s2[i] ?
 	jne end
 	jmp incre
 
 end:
 	mov dl, BYTE [rdi + rcx]
-	cmp dl, BYTE [rsi + rcx]
+	cmp dl, BYTE [rsi + rcx]; s1[i] = s2[i] ?
 	je egal
 	jl infe
 	jg sup

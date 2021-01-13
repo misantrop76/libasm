@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: mminet <mminet@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/10/16 14:22:20 by mminet            #+#    #+#              #
-#    Updated: 2021/01/12 19:13:27 by mminet           ###   ########lyon.fr    #
+#    Created: 2021/01/13 15:46:10 by mminet            #+#    #+#              #
+#    Updated: 2021/01/13 15:46:13 by mminet           ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ run: $(NAME)
 	gcc $(NAME) main.c -o test && ./test
 
 fclean:	clean
-		${RM} ${NAME}
+		${RM} ${NAME} test
 
 clean:
 		${RM} ${OBJS} ${OBJSB}
